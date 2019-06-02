@@ -59,6 +59,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> queryByCondition(String column, String key, String value) {
+        LOGGER.info(">>>> query user by condition,column={}, key={}, value={} <<<<",column,key,value);
+        List<User> userList = null;
+//        key = "$." + key.trim();
+        try {
+            userList = userMapper.queryByCondition(column,key,value);
+        } catch (Exception e) {
+            LOGGER.error(">>>> error message={} <<<<",e.getMessage());
+        }
+
+        return userList;
+    }
+
+    @Override
     public User findById(Integer id) {
         User user = userMapper.selectByPrimaryKey(id);
 

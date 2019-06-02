@@ -16,6 +16,13 @@
     id, username, mobile, sex, age, password,address,family
   </sql>
 
+  <select id="queryByCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_user
+    where ${column} -> "$.${key}" = #{value}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_user
     where id = #{id,jdbcType=INTEGER}

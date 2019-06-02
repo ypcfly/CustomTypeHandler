@@ -2,6 +2,7 @@ package com.ypc.mysql.json.service;
 
 import com.ypc.mysql.json.model.User;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,4 +17,6 @@ public interface UserService {
     User findById(Integer id);
 
     Map<String, Object> updateUser(Integer userId, User user);
+
+    List<User> queryByCondition(String column, String key, String value);
 }

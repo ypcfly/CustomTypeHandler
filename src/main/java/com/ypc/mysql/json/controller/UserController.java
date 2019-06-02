@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,5 +45,12 @@ public class UserController {
     public User getById(@PathVariable("id") Integer id) {
         return userService.findById(id);
     }
+
+    @RequestMapping("/query")
+    public List<User> queryByCondition(@RequestParam("key")String key, @RequestParam("value")String value, @RequestParam("column")String column) {
+
+        return userService.queryByCondition(column,key,value);
+    }
+
 
 }
